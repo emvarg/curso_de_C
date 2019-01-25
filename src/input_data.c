@@ -6,6 +6,7 @@
  * de parametros de entrada
  */
 #define CONTADOR_POR_DEFECTO 3
+#define VARIABLE_POR_DEFECTO 0
 
 int main (int argc, char *argv[]){
  int i;
@@ -27,6 +28,23 @@ int main (int argc, char *argv[]){
  for(i = 0; i < contador; i++)
  {
    printf("Contador = %d \n", i);
+ }
+
+ // Obtener info de las variables de entorno
+ char *entrada_de_variable = getenv("MY_VARIABLE");
+ int variable_tipo_entero;
+
+ if (entrada_de_variable == NULL){
+	 variable_tipo_entero = VARIABLE_POR_DEFECTO;
+ } else {
+	 printf("hit");
+ variable_tipo_entero = atoi(entrada_de_variable);
+ }
+
+ if (variable_tipo_entero){
+   printf("Variable tipo entero fue definida correctamente! %d \n", variable_tipo_entero);
+ } else {
+   printf("Variable tipo entero NO fue definida correctamente! \n");
  }
 
  return 0;
